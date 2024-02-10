@@ -7,4 +7,6 @@ groupRouter.post('/addGroup', group.addGroup)
 
 groupRouter.post('/joinGroup', group.joinGroup)
 
+groupRouter.post('/addSplit', group.addSplit)
+
 module.exports = groupRouter

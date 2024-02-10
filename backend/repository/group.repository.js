@@ -76,7 +76,28 @@ const joinGroup = async (body) => {
   })
 }
 
+const addSplit = async (body) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const { group_id, data } = body
+      try {
+        const data2 = await groups.findOneAndUpdate(
+          { _id: group_id.toString() },
+          { $push: { splits: data } },
+          { new: true }
+        )
+      } catch (error) {
+        console.error('Error updating group:', error)
+      }
+      resolve(group_id)
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
+
 module.exports = {
   addGroup,
   joinGroup,
+  addSplit,
 }
