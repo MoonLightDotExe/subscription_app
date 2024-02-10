@@ -55,8 +55,28 @@ const addSplit = async (req, res) => {
   }
 }
 
+const getGroupDetails = async (req, res) => {
+  try {
+    console.log(req.body)
+    const data = await groups.getGroupDetails(req.body)
+    console.log(data)
+    res.status(200).json({
+      success: true,
+      data,
+      message: 'Data Got Successfully!',
+    })
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      error: err,
+      message: 'Unable to get Group Details!',
+    })
+  }
+}
+
 module.exports = {
   addGroup,
   joinGroup,
   addSplit,
+  getGroupDetails,
 }

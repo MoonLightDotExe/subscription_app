@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Home from "./App/Screens/Home";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -11,10 +11,19 @@ import SubDetails from "./App/components/subdetails";
 import Groups from "./App/Screens/Groups";
 import Profile from "./App/Screens/Profile";
 import NavBar from "./App/components/navbar";
+import VendorLanding from "./components/VendorLanding";
+import AddNewService from "./components/AddNewService";
+import UpdateService from "./components/UpdateService";
+import { useState } from "react";
+import { UserProvider } from './App/context/global.context'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 export default function App() {
+  const [showMenu, setShowMenu] = useState(false);
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
   return (
     <NavigationContainer>
       <View style={styles.container}>

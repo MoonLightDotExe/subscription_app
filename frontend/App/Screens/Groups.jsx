@@ -1,8 +1,8 @@
-import React from 'react';
-import { TouchableOpacity, Text, View, StyleSheet, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // Assuming you're using React Navigation for navigation
-import TabComponent from '../components/tab';
-import GrpComponent from '../components/grptab';
+import React, { useContext, useState, useEffect } from 'react'
+import { TouchableOpacity, Text, View, StyleSheet, Button } from 'react-native' // Assuming you're using React Navigation for navigation
+import TabComponent from '../components/tab'
+import GrpComponent from '../components/grptab'
+import UserContext from '../context/global.context'
 
 const Groups = ({ navigation }) => {
     const members = ["John", "Alice", "Bob"];
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
         paddingVertical: 10, // Adjust the vertical padding
         paddingHorizontal: 20, // Adjust the horizontal padding
     },
-});
+})
 
-export default Groups;
+export default Groups

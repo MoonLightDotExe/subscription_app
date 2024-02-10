@@ -25,6 +25,9 @@ const servicesSchema = new mongoose.Schema({
       type: Number,
     },
   },
+  color: {
+    type: String,
+  },
 })
 
 module.exports = mongoose.model('services', servicesSchema)
