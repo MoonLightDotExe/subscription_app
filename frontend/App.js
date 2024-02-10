@@ -14,8 +14,9 @@ import AddNewService from "./components/AddNewService";
 import UpdateService from "./components/UpdateService";
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState } from "react";
+import { UserProvider } from './App/context/global.context'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 
 export default function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -83,33 +84,35 @@ export default function App() {
     },
   });
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="your_items">
-        <Stack.Screen name="login" component={Login} options={{ title: 'Login', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-        <Stack.Screen name="register" component={Register} options={{ title: 'Register', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-        <Stack.Screen name="home" component={Home} options={{ title: 'Home', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-        <Stack.Screen name="subs" component={Subs} options={{ title: 'Subscriptions', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-        <Stack.Screen name="select" component={SelectSub} options={{ title: 'Select', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-        <Stack.Screen name="addnew" component={SubDetails} options={{ title: 'Add New', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-        <Stack.Screen name="groups" component={Groups} options={{ title: 'Groups', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-        <Stack.Screen name="your_items" component={VendorLanding} options={{
-          title: 'Your Items', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white', headerRight: () => (<TouchableOpacity onPress={toggleMenu}>
-            <MaterialIcons name="more-vert" size={24} color="white" />
-          </TouchableOpacity>)
-        }} />
-        <>{showMenu && (
-          <View style={styles.menu}>
-            <TouchableOpacity onPress={() => navigation.navigate('analytics')} style={styles.menuItem}>
-              <Text style={styles.menuItemText}>Analytics</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('add_new_service')/*handleMenuItemPress('Add New Service')*/} style={styles.menuItem}>
-              <Text style={styles.menuItemText}>Add New Service</Text>
-            </TouchableOpacity>
-          </View>
-        )}</>
-        <Stack.Screen name="add_new_service" component={AddNewService} options={{ title: 'Add New Service', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-        <Stack.Screen name="update_service" component={UpdateService} options={{ title: 'Update Service', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <UserProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="your_items">
+          <Stack.Screen name="login" component={Login} options={{ title: 'Login', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
+          <Stack.Screen name="register" component={Register} options={{ title: 'Register', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
+          <Stack.Screen name="home" component={Home} options={{ title: 'Home', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
+          <Stack.Screen name="subs" component={Subs} options={{ title: 'Subscriptions', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
+          <Stack.Screen name="select" component={SelectSub} options={{ title: 'Select', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
+          <Stack.Screen name="addnew" component={SubDetails} options={{ title: 'Add New', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
+          <Stack.Screen name="groups" component={Groups} options={{ title: 'Groups', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
+          <Stack.Screen name="your_items" component={VendorLanding} options={{
+            title: 'Your Items', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white', headerRight: () => (<TouchableOpacity onPress={toggleMenu}>
+              <MaterialIcons name="more-vert" size={24} color="white" />
+            </TouchableOpacity>)
+          }} />
+          <>{showMenu && (
+            <View style={styles.menu}>
+              <TouchableOpacity onPress={() => navigation.navigate('analytics')} style={styles.menuItem}>
+                <Text style={styles.menuItemText}>Analytics</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('add_new_service')/*handleMenuItemPress('Add New Service')*/} style={styles.menuItem}>
+                <Text style={styles.menuItemText}>Add New Service</Text>
+              </TouchableOpacity>
+            </View>
+          )}</>
+          <Stack.Screen name="add_new_service" component={AddNewService} options={{ title: 'Add New Service', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
+          <Stack.Screen name="update_service" component={UpdateService} options={{ title: 'Update Service', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </UserProvider>
   );
 }
