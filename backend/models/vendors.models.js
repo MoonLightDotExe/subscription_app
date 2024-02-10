@@ -4,8 +4,8 @@ const vendorSchema = new mongoose.Schema({
     vendorName: {
         type: String
     },
-    type: {
-        type: String
+    phoneNumber: {
+        type: Number
     },
     items: [{
         itemName: {
@@ -16,7 +16,11 @@ const vendorSchema = new mongoose.Schema({
         },
         costMetric: {
             type: String
-        }
+        },
+        subscribers: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }]
     }],
     location: {
         lat: {

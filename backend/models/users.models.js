@@ -5,10 +5,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    groups: {
-        type: [mongoose.Schema.Types.ObjectId],
+    groups: [{
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Group'
-    },
+    }],
     address: {
         firstLine: {
             type: String,

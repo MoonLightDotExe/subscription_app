@@ -9,6 +9,12 @@ const groupSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }],
+    splits: [{
+        contribution: [{
+            user: mongoose.Schema.Types.ObjectId,
+            amount: Number
+        }]
+    }],
     subscriptions: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Subscription'
