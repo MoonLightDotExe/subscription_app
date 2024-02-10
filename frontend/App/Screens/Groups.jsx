@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { TouchableOpacity, Text, View, StyleSheet, Button } from 'react-native'
-import { useNavigation } from '@react-navigation/native' // Assuming you're using React Navigation for navigation
+import { TouchableOpacity, Text, View, StyleSheet, Button } from 'react-native' // Assuming you're using React Navigation for navigation
 import TabComponent from '../components/tab'
 import GrpComponent from '../components/grptab'
 import UserContext from '../context/global.context'
@@ -38,8 +37,20 @@ const Groups = ({ navigation }) => {
       console.error('Error fetching group details: ', error)
     }
   }
+
+  const handlePress = async () => {
+    try {
+      navigation.navigate('')
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      onPress={handlePress}
+    >
       {groups.map((g) => {
         return (
           <GrpComponent

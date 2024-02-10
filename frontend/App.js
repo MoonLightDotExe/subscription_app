@@ -10,6 +10,7 @@ import SelectSub from './App/Screens/SelectSub'
 import SubDetails from './App/components/subdetails'
 import Groups from './App/Screens/Groups'
 import { UserProvider } from './App/context/global.context'
+import Payment from './App/components/Payment'
 
 const Stack = createNativeStackNavigator()
 
@@ -46,6 +47,11 @@ export default function App() {
             name='groups'
             component={Groups}
           />
+          <Stack.Screen
+            name='payment'
+            component={Payment}
+          />
+          <Stack.Screen name='group' />
         </Stack.Navigator>
       </NavigationContainer>
     </UserProvider>
