@@ -20,13 +20,6 @@ const UpdateService = ({ onBack }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity onPress={onBack} style={styles.backButton}>
-                    <MaterialIcons name="arrow-back" size={24} color="white" />
-                </TouchableOpacity>
-                <Text style={styles.heading}>Update Service</Text>
-            </View>
-
             <View style={styles.formContainer}>
                 <TextInput
                     style={styles.input}

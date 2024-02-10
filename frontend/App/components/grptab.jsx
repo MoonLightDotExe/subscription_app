@@ -6,7 +6,7 @@ const GrpComponent = ({ grpname, endDate, members, link }) => {
   const navigation = useNavigation()
   const [showMore, setShowMore] = useState(false)
 
-  const handlePress = () => {}
+  const handlePress = () => { }
 
   return (
     <TouchableOpacity
