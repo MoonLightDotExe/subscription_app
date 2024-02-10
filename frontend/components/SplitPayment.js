@@ -4,20 +4,23 @@ import { AntDesign } from '@expo/vector-icons'; // Import from @expo/vector-icon
 
 const CustomSwitch = ({ value, onValueChange }) => {
     return (
-        <TouchableOpacity onPress={onValueChange} style={{ borderRadius: 50, width: 23, height: 23, backgroundColor: value ? '#1E88E5' : '#757575', justifyContent: 'center', alignItems: 'center' }}>
+        <TouchableOpacity onPress={onValueChange} style={{ borderRadius: 50, width: 23, height: 23, backgroundColor: value ? '#1E88E5' : '#222', justifyContent: 'center', alignItems: 'center' }}>
             {value && <AntDesign name="check" size={15} color="#FFFFFF" />}
         </TouchableOpacity>
     );
 };
 
-const SplitPaymentPage = () => {
+const SplitPayment = () => {
     const [amount, setAmount] = useState('');
+    const [mode, setMode] = useState('Even Split')
+    const [color1, setColor1] = useState('#1E88E5')
+    const [color2, setColor2] = useState('#333')
     const [selectedUsers, setSelectedUsers] = useState({
         user1: true,
         user2: true,
         user3: true,
     });
-
+    const [trueCount, setTrueCount] = useState()
     const handleCheckboxChange = (user) => {
         setSelectedUsers((prevState) => ({
             ...prevState,
@@ -26,7 +29,7 @@ const SplitPaymentPage = () => {
     };
 
     return (
-        <View style={{ display: 'flex', flexDirection: 'column', flex: 1, alignItems: 'center', backgroundColor: '#171717', paddingTop: 100, width: '100%', height: '100%' }}>
+        <View style={{ display: 'flex', flexDirection: 'column', flex: 1, alignItems: 'center', backgroundColor: '#222', paddingTop: 100, width: '100%', height: '100%' }}>
             <TextInput
                 placeholder="₹ Amount"
                 placeholderTextColor='#676767'
@@ -37,16 +40,24 @@ const SplitPaymentPage = () => {
                 onChangeText={(text) => setAmount(text)}
             />
             <View style={{ marginTop: 60, width: '100%', display: 'flex', flexDirection: 'row' }}>
-                <View style={{ width: '50%', display: 'flex', alignItems: 'center', borderBottomWidth: 2, borderColor: '#1E88E5' }}>
+                <TouchableOpacity style={{ width: '50%', display: 'flex', alignItems: 'center', borderBottomWidth: 2, borderColor: color1 }} onPress={() => {
+                    setMode('Even Split')
+                    setColor1('#1E88E5')
+                    setColor2('#333')
+                }}>
                     <Text style={{ color: 'white', fontSize: 23 }}>
                         Even Split
                     </Text>
-                </View>
-                <View style={{ width: '50%', display: 'flex', alignItems: 'center' }}>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ width: '50%', display: 'flex', alignItems: 'center', borderBottomWidth: 2, borderColor: color2 }} onPress={() => {
+                    setMode('Custom Split')
+                    setColor2('#1E88E5')
+                    setColor1('#333')
+                }}>
                     <Text style={{ color: 'white', fontSize: 23 }}>
                         Custom Split
                     </Text>
-                </View>
+                </TouchableOpacity>
             </View>
             <ScrollView style={{ width: '100%' }}>
                 <View style={{ width: '100%', paddingLeft: 50, marginTop: 30, display: 'flex' }}>
@@ -82,4 +93,4 @@ const SplitPaymentPage = () => {
     );
 };
 
-export default SplitPaymentPage;
+export default SplitPayment;
