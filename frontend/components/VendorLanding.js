@@ -51,7 +51,7 @@ const VendorLanding = ({ navigation }) => {
             <View style={styles.container}>
                 {selectedOption === null && (
                     <View style={styles.header}>
-                        <Text style={styles.heading}>Your Items</Text>
+                        <Text style={styles.heading}></Text>
                         <TouchableOpacity onPress={toggleMenu}>
                             <MaterialIcons name="more-vert" size={24} color="white" />
                         </TouchableOpacity>
@@ -65,7 +65,8 @@ const VendorLanding = ({ navigation }) => {
                         renderItem={({ item }) => (
                             <TouchableOpacity
                                 style={styles.itemContainer}
-                                onPress={() => setSelectedOption('Update Service')/*navigation.navigate('ItemDetails', { item })*/}
+                                onPress={() => /*setSelectedOption('Update Service')*/
+                                    navigation.navigate('update_service', { item })}
                             >
                                 <Text style={styles.itemName}>{item.name}</Text>
                                 <Text style={styles.itemDescription}>{item.description}</Text>
@@ -78,10 +79,10 @@ const VendorLanding = ({ navigation }) => {
                 )}
                 {showMenu && (
                     <View style={styles.menu}>
-                        <TouchableOpacity onPress={() => handleMenuItemPress('Analytics')} style={styles.menuItem}>
+                        <TouchableOpacity onPress={() => navigation.navigate('analytics')} style={styles.menuItem}>
                             <Text style={styles.menuItemText}>Analytics</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => handleMenuItemPress('Add New Service')} style={styles.menuItem}>
+                        <TouchableOpacity onPress={() => navigation.navigate('add_new_service')/*handleMenuItemPress('Add New Service')*/} style={styles.menuItem}>
                             <Text style={styles.menuItemText}>Add New Service</Text>
                         </TouchableOpacity>
                     </View>
@@ -96,7 +97,6 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         backgroundColor: '#222', // Dark background color
-        marginTop: 20,
         width: '100%'
     },
     header: {
