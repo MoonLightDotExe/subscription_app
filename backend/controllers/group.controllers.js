@@ -37,7 +37,26 @@ const joinGroup = async (req, res) => {
   }
 }
 
+const addSplit = async (req, res) => {
+  try {
+    const data = await groups.addSplit(req.body)
+    console.log(data)
+    res.json({
+      success: true,
+      data,
+      message: 'Split Added Successfully!',
+    })
+  } catch (err) {
+    res.json({
+      success: false,
+      error: err,
+      message: 'Error adding Split!',
+    })
+  }
+}
+
 module.exports = {
   addGroup,
   joinGroup,
+  addSplit,
 }
