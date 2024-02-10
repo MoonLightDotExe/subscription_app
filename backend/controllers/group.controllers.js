@@ -19,6 +19,25 @@ const addGroup = async (req, res) => {
   }
 }
 
+const joinGroup = async (req, res) => {
+  try {
+    const data = await groups.joinGroup(req.body)
+    console.log(data)
+    res.json({
+      success: true,
+      data: data,
+      message: 'Group Joined Successfully!',
+    })
+  } catch (err) {
+    res.json({
+      success: false,
+      data: err,
+      message: 'Invalid Group Code!',
+    })
+  }
+}
+
 module.exports = {
   addGroup,
+  joinGroup,
 }

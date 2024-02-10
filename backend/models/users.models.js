@@ -1,42 +1,49 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-    phoneNumber: {
-        type: String,
-        required: true,
+  name: {
+    type: String,
+    required: [true, 'Please enter your name!'],
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+  },
+  groups: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Group',
     },
-    groups: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Group'
-    }],
-    address: {
-        firstLine: {
-            type: String,
-        },
-        secondLine: {
-            type: String,
-        },
-        thirdLine: {
-            type: String,
-        },
-        pincode: {
-            type: String,
-        }
+  ],
+  address: {
+    firstLine: {
+      type: String,
     },
-    finances: {
-        budget: {
-            type: Number
+    secondLine: {
+      type: String,
+    },
+    thirdLine: {
+      type: String,
+    },
+    pincode: {
+      type: String,
+    },
+  },
+  finances: {
+    budget: {
+      type: Number,
+    },
+    expenses: [
+      {
+        date: {
+          type: Date,
         },
-        expenses: [{
-            date: {
-                type: Date
-            },
-            amount: {
-                type: Number
-            }
-        }]
-    }
-
+        amount: {
+          type: Number,
+        },
+      },
+    ],
+  },
 })
 
 module.exports = mongoose.model('users', userSchema)

@@ -1,23 +1,35 @@
 const mongoose = require('mongoose')
 
 const groupSchema = new mongoose.Schema({
-    admin: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+  group_name: {
+    type: String,
+    required: [true, 'Please enter Group name'],
+  },
+  group_code: {
+    type: String,
+  },
+  admin: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  users: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
     },
     users: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
     }],
     splits: [{
-        contribution: [{
-            user: mongoose.Schema.Types.ObjectId,
-            amount: Number
-        }]
+      contribution: [{
+        user: mongoose.Schema.Types.ObjectId,
+        amount: Number
+      }]
     }],
     subscriptions: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Subscription'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Subscription'
     }]
 })
 
