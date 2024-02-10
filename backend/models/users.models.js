@@ -44,6 +44,27 @@ const userSchema = new mongoose.Schema({
       },
     ],
   },
+  subscriptions: [
+    {
+      service_name: {
+        type: String,
+      },
+      service_type: {
+        type: String,
+      },
+      location: {
+        lat: {
+          type: Number,
+        },
+        lng: {
+          type: Number,
+        },
+      },
+      price: {
+        type: Number,
+      },
+    },
+  ],
 })
 
 module.exports = mongoose.model('users', userSchema)

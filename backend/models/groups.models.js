@@ -20,6 +20,7 @@ const groupSchema = new mongoose.Schema({
   ],
   splits: [
     {
+      timestamp: Date,
       contributions: [
         {
           user_id: mongoose.Schema.Types.ObjectId,
@@ -30,8 +31,23 @@ const groupSchema = new mongoose.Schema({
   ],
   subscriptions: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Subscription',
+      service_name: {
+        type: String,
+      },
+      service_type: {
+        type: String,
+      },
+      location: {
+        lat: {
+          type: Number,
+        },
+        lng: {
+          type: Number,
+        },
+      },
+      price: {
+        type: Number,
+      },
     },
   ],
 })
