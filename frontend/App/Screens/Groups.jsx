@@ -8,11 +8,18 @@ const Groups = ({ navigation }) => {
     const members = ["John", "Alice", "Bob"];
     return (
         <View style={styles.container}>
-            <GrpComponent grpname="grpo1" endDate="12.12.12" members={members} link="abcd" />
+            <GrpComponent grpname="Group 1" endDate="12.12.12" members={members} link="abcd" />
 
             <View style={styles.buttonContainer}>
                 <Button
-                    title="add new group"
+                    color="#0DF3C9B9"
+                    title="create new group"
+                    onPress={() => navigation.navigate('select')}
+                    style={styles.button}
+                />
+                <Button
+                    color="#0DF3C9BB"
+                    title="join existing group"
                     onPress={() => navigation.navigate('select')}
                     style={styles.button}
                 />
@@ -22,8 +29,10 @@ const Groups = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
+
     container: {
         flex: 1,
+        backgroundColor: '#000000',
     },
     buttonContainer: {
         position: 'absolute',

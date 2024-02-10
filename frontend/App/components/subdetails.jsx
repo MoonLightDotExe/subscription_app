@@ -26,54 +26,80 @@ const SubDetails = () => {
 
     return (
         <View style={styles.container}>
-            <TextInput
-                style={styles.input}
-                placeholder="Cost"
-                value={cost}
-                onChangeText={text => setCost(text)}
-                keyboardType="numeric"
-            />
-            <View style={styles.dateContainer}>
-                <Text>Due Date: {dueDate.toLocaleDateString('en-US')}</Text>
-                <Button title="Select Date" onPress={showDatepicker} />
-            </View>
-            {showDatePicker && (
-                <DateTimePicker
-                    value={dueDate}
-                    mode="date"
-                    display="default"
-                    onChange={handleDateChange}
+            <View style={styles.box}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Cost"
+                    value={cost}
+                    onChangeText={text => setCost(text)}
+                    keyboardType="numeric"
                 />
-            )}
-            <View style={styles.checkboxContainer}>
-                <Text>Reminder:</Text>
-                <Switch value={reminder} onValueChange={value => setReminder(value)} />
+                <View style={styles.dateContainer}>
+                    <Text style={styles.dateText}>Due Date: {dueDate.toLocaleDateString('en-US')}</Text>
+                    <Button title="Select Date" onPress={showDatepicker} color="#13FCE4CB" />
+                </View>
+                {showDatePicker && (
+                    <DateTimePicker
+                        value={dueDate}
+                        mode="date"
+                        display="default"
+                        onChange={handleDateChange}
+                    />
+                )}
+                <View style={styles.checkboxContainer}>
+                    <Text style={styles.dateText}>Reminder:</Text>
+                    <Switch value={reminder} onValueChange={value => setReminder(value)} />
+                </View>
+                <Button color="#13FCE4CB" title="Submit" onPress={handleSubmit} />
             </View>
-            <Button title="Submit" onPress={handleSubmit} />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    box: {
+        borderWidth: 1,
+        borderColor: '#00FFC3', // Color of the border
+        borderRadius: 10, // Rounded border radius
+        padding: 20, // Padding inside the box
+        marginTop: 200
+    },
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         paddingHorizontal: 20,
+        backgroundColor: "#000000",
+        marginTop: 0,
+
+
+
+
     },
     input: {
-        height: 40,
+        height: 60,
         width: '100%',
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 10,
+
+        marginBottom: 30,
         paddingHorizontal: 10,
+        backgroundColor: '#FFFFFF', // Set background color to green
+        borderRadius: 10, // Set border radius for rounded corners
+        maxWidth: "100%",
+        fontSize: 20,
+
+
+
     },
+
     dateContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 10,
+        fontSize: 20,
+    },
+    dateText: {
+        color: '#FBFFFE', // Set the color to green
+        fontSize: 20, // Adjust font size if needed
+        fontWeight: '300', // Adjust font weight if needed
     },
     checkboxContainer: {
         flexDirection: 'row',

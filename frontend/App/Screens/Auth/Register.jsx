@@ -40,7 +40,7 @@ const Register = () => {
                     onChangeText={(text) => setConfirmPassword(text)}
                 />
             </View>
-            <Button title="REGISTER" />
+            <Button color="#06FFC5A1" title="REGISTER" />
         </View>
     );
 };
@@ -48,20 +48,20 @@ const Register = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#000000',
         alignItems: 'center',
         justifyContent: 'center',
     },
     logo: {
-        fontWeight: 'bold',
+        fontWeight: '300',
         fontSize: 50,
-        color: '#fb5b5a',
+        color: '#06FFC5',
         marginBottom: 40,
     },
     inputView: {
         width: '80%',
-        backgroundColor: '#465881',
-        borderRadius: 25,
+        backgroundColor: '#E9E9E9',
+        borderRadius: 11,
         height: 50,
         marginBottom: 20,
         justifyContent: 'center',
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     registerBtn: {
         width: '80%',
-        backgroundColor: '#fb5b5a',
+        backgroundColor: '#27FFA5',
         borderRadius: 25,
         height: 50,
         alignItems: 'center',

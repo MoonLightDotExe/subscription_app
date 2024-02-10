@@ -31,12 +31,19 @@ const Login = ({ navigation }) => {
                 />
             </View>
 
-            <Button title="Login" onPress={() => navigation.navigate('subs')} />
+            <View style={{
+                display: "flex",
+                gap: 20,
+                marginTop: 30
+            }}>
 
-            <Button title="Don't have an account? Sign up!" onPress={() =>
-                navigation.navigate("register")
-            } />
-        </View>
+                <Button title="Login" color="#368467" onPress={() => navigation.navigate('subs')} />
+
+                <Button color="#000000" title="Don't have an account? Sign up!" onPress={() =>
+                    navigation.navigate("register")
+                } />
+            </View>
+        </View >
     );
 };
 
@@ -48,15 +55,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     logo: {
-        fontWeight: 'bold',
+        fontWeight: '300',
         fontSize: 50,
-        color: '#F98F9F',
+        color: "#00FFC3",
         marginBottom: 40,
     },
     inputView: {
         width: '80%',
         backgroundColor: '#DBE1ED',
-        borderRadius: 25,
+        borderRadius: 11,
         height: 50,
         marginBottom: 20,
         justifyContent: 'center',
@@ -68,7 +75,7 @@ const styles = StyleSheet.create({
     },
     loginBtn: {
         width: '80%',
-        backgroundColor: '#fb5b5a',
+        backgroundColor: "#00FFC3",
         borderRadius: 25,
         height: 50,
         alignItems: 'center',
