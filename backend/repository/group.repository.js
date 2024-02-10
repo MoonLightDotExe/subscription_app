@@ -96,8 +96,24 @@ const addSplit = async (body) => {
   })
 }
 
+const getGroupDetails = async (body) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      console.log(body)
+      const group_found = await groups.find({
+        $or: [{ admin: body.user_id }, { users: body.user_id }],
+      })
+      console.log(group_found)
+      resolve(group_found)
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
+
 module.exports = {
   addGroup,
   joinGroup,
   addSplit,
+  getGroupDetails,
 }
