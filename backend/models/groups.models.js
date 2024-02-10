@@ -18,16 +18,36 @@ const groupSchema = new mongoose.Schema({
       ref: 'User',
     },
   ],
-  splits: [{
-    contribution: [{
-      user: mongoose.Schema.Types.ObjectId,
-      amount: Number
-    }]
-  }],
+  splits: [
+    {
+      timestamp: Date,
+      contributions: [
+        {
+          user_id: mongoose.Schema.Types.ObjectId,
+          amount: Number,
+        },
+      ],
+    },
+  ],
   subscriptions: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Subscription',
+      service_name: {
+        type: String,
+      },
+      service_type: {
+        type: String,
+      },
+      location: {
+        lat: {
+          type: Number,
+        },
+        lng: {
+          type: Number,
+        },
+      },
+      price: {
+        type: Number,
+      },
     },
   ],
 })
