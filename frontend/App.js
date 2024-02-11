@@ -36,7 +36,7 @@ export default function App() {
       <Provider>
         <NavigationContainer>
           <View style={styles.container}>
-            <Stack.Navigator initialRouteName="split">
+            <Stack.Navigator initialRouteName="home">
               <Stack.Screen name="login" component={Login} />
               <Stack.Screen name="register" component={Register} />
               <Stack.Screen name="home" component={Home} />
@@ -55,6 +55,7 @@ export default function App() {
               <Stack.Screen name="updateservice" component={UpdateService} />
               <Stack.Screen name="viewgrp" component={ViewGroup} />
               <Stack.Screen name="split" component={SplitPayment} />
+              {/* <Stack.Screen name="newsub" component={SplitPayment} /> */}
             </Stack.Navigator>
           </View>
           <StatusBar style="auto" />

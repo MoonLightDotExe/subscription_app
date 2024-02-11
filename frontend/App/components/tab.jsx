@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 20,
         marginTop: 10,
-        backgroundColor: '#10CDAA',
+        backgroundColor: '#333434',
         width: "90%",
         marginLeft: "auto",
         marginRight: "auto",
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 30,
-        color: "#000000",
+        color: '#1EE2D2',
         fontWeight: "300"
 
 

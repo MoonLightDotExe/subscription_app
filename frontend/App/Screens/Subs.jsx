@@ -17,16 +17,16 @@ const Subs = ({ navigation }) => {
             </View>
             <View style={styles.buttonContainer}>
                 <Button
-                    color="#0DF3C9BC"
+                    color="#0DF3C946"
                     title="View Groups"
                     onPress={() => navigation.navigate('groups')}
                     style={styles.button}
                 />
 
                 <Button
-                    color="#0DF3C9C3"
-                    title="add new subscription"
-                    onPress={() => navigation.navigate('select')}
+                    color="#0DF3C946"
+                    title=" +  "
+                    onPress={() => navigation.navigate('customsub')}
                     style={styles.button}
                 />
 
