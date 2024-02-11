@@ -5,22 +5,29 @@ import GrpComponent from '../components/grptab'
 import UserContext from '../context/global.context'
 
 const Groups = ({ navigation }) => {
-    const members = ["John", "Alice", "Bob"];
+    const grps = [{ _id: 1, name: "Group 1" }, { _id: 2, name: "Group 2" }, { _id: 3, name: "Group 3" },]
     return (
         <View style={styles.container}>
-            <GrpComponent grpname="Group 1" endDate="12.12.12" members={members} link="abcd" />
-
+            {
+                grps.map((item) => {
+                    return (
+                        <TouchableOpacity key={item._id} onPress={() => navigation.navigate('grphome')}>
+                            <GrpComponent grpname={item.name} />
+                        </TouchableOpacity>
+                    )
+                })
+            }
             <View style={styles.buttonContainer}>
                 <Button
                     color="#0DF3C9B9"
                     title="create new group"
-                    onPress={() => navigation.navigate('select')}
+                    // onPress={() => navigation.navigate('select')}
                     style={styles.button}
                 />
                 <Button
                     color="#0DF3C9BB"
                     title="join existing group"
-                    onPress={() => navigation.navigate('select')}
+                    // onPress={() => navigation.navigate('select')}
                     style={styles.button}
                 />
             </View>

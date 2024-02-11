@@ -10,7 +10,8 @@ const SelectSub = ({ navigation }) => {
     const tabData = [
         { text: "Netflix", link: "addnew" },
         { text: "Amazon Prime", link: "addnew" },
-        { text: "Disney+", link: "addnew" }
+        { text: "Disney+", link: "addnew" },
+        { text: "Custom", link: "customsub" }
     ];
 
     return (

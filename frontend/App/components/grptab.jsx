@@ -1,27 +1,16 @@
 import React, { useState } from 'react'
-import { TouchableOpacity, Text, StyleSheet, Button } from 'react-native'
+import { TouchableOpacity, Text, StyleSheet, Button, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-const GrpComponent = ({ grpname, endDate, members, link }) => {
+const GrpComponent = ({ grpname }) => {
   const navigation = useNavigation()
-  const [showMore, setShowMore] = useState(false)
 
   const handlePress = () => { }
 
   return (
     <View style={styles.box}>
-      <TouchableOpacity style={styles.tab} onPress={handleShowMore}>
+      <TouchableOpacity style={styles.tab}>
         <Text style={styles.text}>{grpname}</Text>
-        {showMore && (
-          <View>
-            <Text>End Date: {endDate}</Text>
-            <Text>Members:</Text>
-            {members.map((member, index) => (
-              <Text key={index}>{member}</Text>
-            ))}
-          </View>
-        )}
-        <Text style={styles.showMore}>{showMore ? "Show Less" : "Show More"}</Text>
       </TouchableOpacity>
     </View>
   );

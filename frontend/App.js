@@ -15,9 +15,12 @@ import VendorLanding from "./components/VendorLanding";
 import AddNewService from "./components/AddNewService";
 import UpdateService from "./components/UpdateService";
 import { useState } from "react";
-import { UserProvider } from './App/context/global.context'
+import { UserProvider } from "./App/context/global.context";
+import { Provider } from "react-native-paper";
+import CustomSub from "./App/components/customsub";
+import GroupLanding from "./components/GroupLanding";
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -25,22 +28,28 @@ export default function App() {
     setShowMenu(!showMenu);
   };
   return (
-    <NavigationContainer>
-      <View style={styles.container}>
-        <Stack.Navigator initialRouteName="home">
-          <Stack.Screen name="login" component={Login} />
-          <Stack.Screen name="register" component={Register} />
-          <Stack.Screen name="home" component={Home} />
-          <Stack.Screen name="subs" component={Subs} />
-          <Stack.Screen name="select" component={SelectSub} />
-          <Stack.Screen name="addnew" component={SubDetails} />
-          <Stack.Screen name="groups" component={Groups} />
-          <Stack.Screen name="profile" component={Profile} />
-          <Stack.Screen name="navbar" component={NavBar} />
-        </Stack.Navigator>
-      </View>
-      <StatusBar style="auto" />
-    </NavigationContainer>
+    <UserProvider>
+      <Provider>
+        <NavigationContainer>
+          <View style={styles.container}>
+            <Stack.Navigator initialRouteName="home">
+              <Stack.Screen name="login" component={Login} />
+              <Stack.Screen name="register" component={Register} />
+              <Stack.Screen name="home" component={Home} />
+              <Stack.Screen name="subs" component={Subs} />
+              <Stack.Screen name="select" component={SelectSub} />
+              <Stack.Screen name="addnew" component={SubDetails} />
+              <Stack.Screen name="groups" component={Groups} />
+              <Stack.Screen name="profile" component={Profile} />
+              <Stack.Screen name="navbar" component={NavBar} />
+              <Stack.Screen name="customsub" component={CustomSub} />
+              <Stack.Screen name="grphome" component={GroupLanding} />
+            </Stack.Navigator>
+          </View>
+          <StatusBar style="auto" />
+        </NavigationContainer>
+      </Provider>
+    </UserProvider>
   );
 }
 
