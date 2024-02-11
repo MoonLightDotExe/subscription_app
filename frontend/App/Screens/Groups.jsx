@@ -58,13 +58,13 @@ const Groups = ({ navigation }) => {
             <View style={styles.buttonContainer}>
                 <Button
                     color='#0DF3C9B9'
-                    title='create new group'
+                    title='Create Group'
                     // onPress={() => navigation.navigate('select')}
                     style={styles.button}
                 />
                 <Button
                     color='#0DF3C9BB'
-                    title='join existing group'
+                    title='Join Group'
                     onPress={() => navigation.navigate('joingrp')}
                     style={styles.button}
                 />
@@ -81,9 +81,10 @@ const styles = StyleSheet.create({
     buttonContainer: {
         position: 'absolute',
         bottom: 20,
-        right: 20,
+        left: 60,
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'center',
         gap: 40,
     },
 
