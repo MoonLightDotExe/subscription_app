@@ -118,9 +118,23 @@ const getGroupDetails = async (body) => {
   })
 }
 
+const getSubDetails = async (body) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const { group_id } = body
+      const group_found = await groups.findOne({ _id: group_id })
+      console.log(group_found)
+      resolve(group_found)
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
+
 module.exports = {
   addGroup,
   joinGroup,
   addSplit,
   getGroupDetails,
+  getSubDetails,
 }

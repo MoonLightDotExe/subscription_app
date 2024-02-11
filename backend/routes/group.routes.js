@@ -11,4 +11,6 @@ groupRouter.post('/addSplit', group.addSplit)
 
 groupRouter.post('/getGroupDetails', group.getGroupDetails)
 
+groupRouter.post('/getSubDetails', group.getSubDetails)
+
 module.exports = groupRouter

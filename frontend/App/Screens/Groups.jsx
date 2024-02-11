@@ -5,20 +5,53 @@ import GrpComponent from '../components/grptab'
 import UserContext from '../context/global.context'
 
 const Groups = ({ navigation }) => {
-  const grps = [
-    { _id: 1, name: 'Group 1' },
-    { _id: 2, name: 'Group 2' },
-    { _id: 3, name: 'Group 3' },
-  ]
+  const [grps, setGroups] = useState([])
+
+  const { user_id, group_id, setGroup_id } = useContext(UserContext)
+
+  useEffect(() => {
+    fetchGroupDetails()
+  }, [])
+
+  const fetchGroupDetails = async () => {
+    try {
+      const sendBody = {
+        user_id,
+      }
+      const response = await fetch(
+        'http://192.168.56.1:5000/api/groups/getGroupDetails',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(sendBody),
+        }
+      )
+      const data = await response.json()
+      console.log(data.data)
+      setGroups(data.data)
+      console.log(grps)
+    } catch (error) {
+      console.error('Error fetching group details: ', error)
+    }
+  }
+
+  const handlePress = (id) => {
+    setGroup_id(id)
+    navigation.navigate('grphome')
+    console.log(group_id)
+  }
+
   return (
     <View style={styles.container}>
       {grps.map((item) => {
         return (
           <TouchableOpacity
             key={item._id}
-            onPress={() => navigation.navigate('grphome')}
+            onPress={() => handlePress(item._id)}
           >
-            <GrpComponent grpname={item.name} />
+            <GrpComponent grpname={item.group_name} />
           </TouchableOpacity>
         )
       })}
