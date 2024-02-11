@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
     budget: {
       type: Number,
     },
+    currentSpending: {
+      type: Number,
+      default: 0,
+    },
     expenses: [
       {
         date: {

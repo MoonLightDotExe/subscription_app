@@ -86,6 +86,13 @@ const addSplit = async (body) => {
           { $push: { splits: data } },
           { new: true }
         )
+
+        data.contributions.forEach(async (d) => {
+          const user_found = await users.findOneAndUpdate(
+            { _id: d.user_id },
+            { $inc: { 'finances.currentSpending': d.amount } }
+          )
+        })
       } catch (error) {
         console.error('Error updating group:', error)
       }
@@ -111,9 +118,23 @@ const getGroupDetails = async (body) => {
   })
 }
 
+const getSubDetails = async (body) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const { group_id } = body
+      const group_found = await groups.findOne({ _id: group_id })
+      console.log(group_found)
+      resolve(group_found)
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
+
 module.exports = {
   addGroup,
   joinGroup,
   addSplit,
   getGroupDetails,
+  getSubDetails,
 }
