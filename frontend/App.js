@@ -21,6 +21,7 @@ import CustomSub from "./App/components/customsub";
 import GroupLanding from "./components/GroupLanding";
 import JoinGroup from "./components/JoinGroup";
 import VendorLogin from "./App/Screens/Auth/VendorLogin";
+import ViewGroup from "./components/ViewGroup";
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,7 @@ export default function App() {
               <Stack.Screen name="vendorhome" component={VendorLanding} />
               <Stack.Screen name="addservice" component={AddNewService} />
               <Stack.Screen name="updateservice" component={UpdateService} />
+              <Stack.Screen name="viewgrp" component={ViewGroup} />
             </Stack.Navigator>
           </View>
           <StatusBar style="auto" />
