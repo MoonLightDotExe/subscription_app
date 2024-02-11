@@ -19,6 +19,7 @@ import { UserProvider } from "./App/context/global.context";
 import { Provider } from "react-native-paper";
 import CustomSub from "./App/components/customsub";
 import GroupLanding from "./components/GroupLanding";
+import JoinGroup from "./components/JoinGroup";
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +45,7 @@ export default function App() {
               <Stack.Screen name="navbar" component={NavBar} />
               <Stack.Screen name="customsub" component={CustomSub} />
               <Stack.Screen name="grphome" component={GroupLanding} />
+              <Stack.Screen name="joingrp" component={JoinGroup} />
             </Stack.Navigator>
           </View>
           <StatusBar style="auto" />

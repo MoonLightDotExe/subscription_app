@@ -6,6 +6,9 @@ import UserContext from '../context/global.context'
 
 const Groups = ({ navigation }) => {
     const grps = [{ _id: 1, name: "Group 1" }, { _id: 2, name: "Group 2" }, { _id: 3, name: "Group 3" },]
+    const createNewGroup = async () => {
+
+    }
     return (
         <View style={styles.container}>
             {
@@ -21,13 +24,13 @@ const Groups = ({ navigation }) => {
                 <Button
                     color="#0DF3C9B9"
                     title="create new group"
-                    // onPress={() => navigation.navigate('select')}
+                    onPress={() => createNewGroup()}
                     style={styles.button}
                 />
                 <Button
                     color="#0DF3C9BB"
                     title="join existing group"
-                    // onPress={() => navigation.navigate('select')}
+                    onPress={() => navigation.navigate('joingrp')}
                     style={styles.button}
                 />
             </View>
