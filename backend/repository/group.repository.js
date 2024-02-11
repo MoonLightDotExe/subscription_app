@@ -86,6 +86,13 @@ const addSplit = async (body) => {
           { $push: { splits: data } },
           { new: true }
         )
+
+        data.contributions.forEach(async (d) => {
+          const user_found = await users.findOneAndUpdate(
+            { _id: d.user_id },
+            { $inc: { 'finances.currentSpending': d.amount } }
+          )
+        })
       } catch (error) {
         console.error('Error updating group:', error)
       }

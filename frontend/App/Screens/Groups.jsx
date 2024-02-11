@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { TouchableOpacity, Text, View, StyleSheet, Button } from 'react-native'
-import { useNavigation } from '@react-navigation/native' // Assuming you're using React Navigation for navigation
+import { TouchableOpacity, Text, View, StyleSheet, Button } from 'react-native' // Assuming you're using React Navigation for navigation
 import TabComponent from '../components/tab'
 import GrpComponent from '../components/grptab'
 import UserContext from '../context/global.context'
@@ -9,7 +8,7 @@ const Groups = ({ navigation }) => {
   const members = ['John', 'Alice', 'Bob']
   const [groups, setGroups] = useState([])
 
-  const { user_id } = useContext(UserContext)
+  const { user_id, group_id, setGroup_id } = useContext(UserContext)
 
   useEffect(() => {
     fetchGroupDetails()
@@ -38,6 +37,11 @@ const Groups = ({ navigation }) => {
       console.error('Error fetching group details: ', error)
     }
   }
+
+  const handlePress = () => {
+    navigation.navigate('payment')
+  }
+
   return (
     <View style={styles.container}>
       {groups.map((g) => {
@@ -45,8 +49,7 @@ const Groups = ({ navigation }) => {
           <GrpComponent
             grpname={g.group_name}
             endDate='12.12.12'
-            members={members}
-            link='abcd'
+            onPress={() => handlePress}
           />
         )
       })}
