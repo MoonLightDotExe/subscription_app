@@ -65,7 +65,7 @@ const Groups = ({ navigation }) => {
                 <Button
                     color='#0DF3C9BB'
                     title='join existing group'
-                    // onPress={() => navigation.navigate('select')}
+                    onPress={() => navigation.navigate('joingrp')}
                     style={styles.button}
                 />
             </View>
