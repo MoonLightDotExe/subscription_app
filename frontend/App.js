@@ -9,14 +9,13 @@ import Subs from "./App/Screens/Subs";
 import SelectSub from "./App/Screens/SelectSub";
 import SubDetails from "./App/components/subdetails";
 import Groups from "./App/Screens/Groups";
+import Profile from "./App/Screens/Profile";
+import NavBar from "./App/components/navbar";
 import VendorLanding from "./components/VendorLanding";
 import AddNewService from "./components/AddNewService";
 import UpdateService from "./components/UpdateService";
 import { useState } from "react";
 import { UserProvider } from './App/context/global.context'
-import GroupLanding from "./components/GroupLanding";
-import { Provider } from "react-native-paper";
-import SplitPayment from "./components/SplitPayment";
 
 const Stack = createNativeStackNavigator()
 
@@ -26,27 +25,27 @@ export default function App() {
     setShowMenu(!showMenu);
   };
   return (
-    <UserProvider>
-      <Provider>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="home">
-            <Stack.Screen name="login" component={Login} options={{ title: 'Login', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-            <Stack.Screen name="register" component={Register} options={{ title: 'Register', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-            <Stack.Screen name="home" component={Home} options={{ title: 'Home', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-            <Stack.Screen name="subs" component={Subs} options={{ title: 'Subscriptions', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-            <Stack.Screen name="select" component={SelectSub} options={{ title: 'Select', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-            <Stack.Screen name="addnew" component={SubDetails} options={{ title: 'Add New', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-            <Stack.Screen name="groups" component={Groups} options={{ title: 'Groups', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-            <Stack.Screen name="your_items" component={VendorLanding} options={{
-              title: 'Your Items', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white'
-            }} />
-            <Stack.Screen name="add_new_service" component={AddNewService} options={{ title: 'Add New Service', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-            <Stack.Screen name="update_service" component={UpdateService} options={{ title: 'Update Service', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-            <Stack.Screen name="group_landing" component={GroupLanding} options={{ title: 'My Group', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-            <Stack.Screen name="add_sub" component={SplitPayment} options={{ title: 'My Group', headerTitleStyle: { color: 'white', }, headerStyle: { backgroundColor: '#222' }, headerTintColor: 'white' }} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </Provider>
-    </UserProvider>
+    <NavigationContainer>
+      <View style={styles.container}>
+        <Stack.Navigator initialRouteName="home">
+          <Stack.Screen name="login" component={Login} />
+          <Stack.Screen name="register" component={Register} />
+          <Stack.Screen name="home" component={Home} />
+          <Stack.Screen name="subs" component={Subs} />
+          <Stack.Screen name="select" component={SelectSub} />
+          <Stack.Screen name="addnew" component={SubDetails} />
+          <Stack.Screen name="groups" component={Groups} />
+          <Stack.Screen name="profile" component={Profile} />
+          <Stack.Screen name="navbar" component={NavBar} />
+        </Stack.Navigator>
+      </View>
+      <StatusBar style="auto" />
+    </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 2,
+  },
+});
