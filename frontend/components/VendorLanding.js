@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   View,
   Text,
@@ -6,52 +6,52 @@ import {
   TouchableOpacity,
   StyleSheet,
   TouchableWithoutFeedback,
-} from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
-import AddNewService from "./AddNewService";
-import UpdateService from "./UpdateService";
+} from 'react-native'
+import { MaterialIcons } from '@expo/vector-icons'
+import AddNewService from './AddNewService'
+import UpdateService from './UpdateService'
 
 const VendorLanding = ({ navigation }) => {
-  const [showMenu, setShowMenu] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [showMenu, setShowMenu] = useState(false)
+  const [selectedOption, setSelectedOption] = useState(null)
 
   const items = [
     {
       id: 1,
-      name: "Blue T-Shirt",
-      description: "A comfortable blue t-shirt made from soft cotton.",
-      price: 20.99,
+      name: 'Bananas',
+      description: 'Fresh and Ripe Yellow Bananas',
+      price: 20,
     },
     {
       id: 2,
-      name: "Black Jeans",
-      description: "Classic black jeans suitable for any occasion.",
-      price: 39.99,
+      name: 'Cow Milk',
+      description: 'Fresh Amul Milk',
+      price: 27,
     },
     {
       id: 3,
-      name: "Running Shoes",
-      description: "Lightweight running shoes with excellent cushioning.",
-      price: 59.99,
+      name: 'Apples',
+      description: 'Crunchy, Sweet and Red Apples',
+      price: 60,
     },
-  ];
+  ]
 
   const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
+    setShowMenu(!showMenu)
+  }
 
   const handleMenuItemPress = (option) => {
-    setSelectedOption(option);
-    setShowMenu(false);
-  };
+    setSelectedOption(option)
+    setShowMenu(false)
+  }
 
   const closeMenu = () => {
-    setShowMenu(false);
-  };
+    setShowMenu(false)
+  }
 
   const handleBack = () => {
-    setSelectedOption(null);
-  };
+    setSelectedOption(null)
+  }
 
   return (
     <TouchableWithoutFeedback onPress={closeMenu}>
@@ -60,12 +60,16 @@ const VendorLanding = ({ navigation }) => {
           <View style={styles.header}>
             <Text style={styles.heading}></Text>
             <TouchableOpacity onPress={toggleMenu}>
-              <MaterialIcons name="more-vert" size={24} color="white" />
+              <MaterialIcons
+                name='more-vert'
+                size={24}
+                color='white'
+              />
             </TouchableOpacity>
           </View>
         )}
         {selectedOption !== null ? (
-          selectedOption === "Add New Service" ? (
+          selectedOption === 'Add New Service' ? (
             <AddNewService onBack={handleBack} />
           ) : (
             <UpdateService onBack={handleBack} />
@@ -78,7 +82,7 @@ const VendorLanding = ({ navigation }) => {
                 style={styles.itemContainer}
                 onPress={() =>
                   /*setSelectedOption('Update Service')*/
-                  navigation.navigate("updateservice", { item })
+                  navigation.navigate('updateservice', { item })
                 }
               >
                 <Text style={styles.itemName}>{item.name}</Text>
@@ -93,7 +97,7 @@ const VendorLanding = ({ navigation }) => {
         {showMenu && (
           <View style={styles.menu}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("analytics")}
+              onPress={() => navigation.navigate('analytics')}
               style={styles.menuItem}
             >
               <Text style={styles.menuItemText}>Analytics</Text>
@@ -102,7 +106,7 @@ const VendorLanding = ({ navigation }) => {
               onPress={
                 () =>
                   navigation.navigate(
-                    "addservice"
+                    'addservice'
                   ) /*handleMenuItemPress('Add New Service')*/
               }
               style={styles.menuItem}
@@ -113,26 +117,26 @@ const VendorLanding = ({ navigation }) => {
         )}
       </View>
     </TouchableWithoutFeedback>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#222", // Dark background color
-    width: "100%",
+    backgroundColor: '#222', // Dark background color
+    width: '100%',
   },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 20,
   },
   heading: {
     fontSize: 24,
-    fontWeight: "bold",
-    color: "#fff", // White text color
+    fontWeight: 'bold',
+    color: '#fff', // White text color
   },
   list: {
     flex: 1,
@@ -140,29 +144,29 @@ const styles = StyleSheet.create({
   itemContainer: {
     padding: 10,
     marginBottom: 10,
-    backgroundColor: "#333", // Darker background color for items
+    backgroundColor: '#333', // Darker background color for items
     borderRadius: 8,
   },
   itemName: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#fff", // White text color
+    fontWeight: 'bold',
+    color: '#fff', // White text color
   },
   itemDescription: {
     fontSize: 16,
     marginBottom: 5,
-    color: "#ccc", // Lighter text color for description
+    color: '#ccc', // Lighter text color for description
   },
   itemPrice: {
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#4CAF50", // Green text color for price
+    fontWeight: 'bold',
+    color: '#4CAF50', // Green text color for price
   },
   menu: {
-    position: "absolute",
+    position: 'absolute',
     top: 60,
     right: 20,
-    backgroundColor: "#333", // Dark background color for menu
+    backgroundColor: '#333', // Dark background color for menu
     padding: 10,
     borderRadius: 8,
     elevation: 5,
@@ -173,8 +177,8 @@ const styles = StyleSheet.create({
   },
   menuItemText: {
     fontSize: 16,
-    color: "#fff", // White text color for menu items
+    color: '#fff', // White text color for menu items
   },
-});
+})
 
-export default VendorLanding;
+export default VendorLanding
