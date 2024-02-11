@@ -22,6 +22,7 @@ import GroupLanding from "./components/GroupLanding";
 import JoinGroup from "./components/JoinGroup";
 import VendorLogin from "./App/Screens/Auth/VendorLogin";
 import ViewGroup from "./components/ViewGroup";
+import SplitPayment from "./components/SplitPayment";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,7 +36,7 @@ export default function App() {
       <Provider>
         <NavigationContainer>
           <View style={styles.container}>
-            <Stack.Navigator initialRouteName="home">
+            <Stack.Navigator initialRouteName="split">
               <Stack.Screen name="login" component={Login} />
               <Stack.Screen name="register" component={Register} />
               <Stack.Screen name="home" component={Home} />
@@ -53,6 +54,7 @@ export default function App() {
               <Stack.Screen name="addservice" component={AddNewService} />
               <Stack.Screen name="updateservice" component={UpdateService} />
               <Stack.Screen name="viewgrp" component={ViewGroup} />
+              <Stack.Screen name="split" component={SplitPayment} />
             </Stack.Navigator>
           </View>
           <StatusBar style="auto" />

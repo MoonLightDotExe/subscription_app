@@ -88,7 +88,16 @@ const GroupLanding = () => {
           );
         })}
       </ScrollView>
-
+      <Button
+        color="#0DF3C9BB"
+        title="Pay Now"
+        onPress={() => console.log("split")}
+        style={{
+          fontSize: 20, // Increase the font size
+          paddingVertical: 10, // Adjust the vertical padding
+          paddingHorizontal: 20, // Adjust the horizontal padding
+        }}
+      />
       {/* Plus button to open menu */}
       <TouchableOpacity
         ref={plusButtonRef}
