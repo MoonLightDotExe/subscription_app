@@ -5,59 +5,34 @@ import GrpComponent from '../components/grptab'
 import UserContext from '../context/global.context'
 
 const Groups = ({ navigation }) => {
-  const members = ['John', 'Alice', 'Bob']
-  const [groups, setGroups] = useState([])
-
-  const { user_id, group_id, setGroup_id } = useContext(UserContext)
-
-  useEffect(() => {
-    fetchGroupDetails()
-  }, [])
-
-  const fetchGroupDetails = async () => {
-    try {
-      const sendBody = {
-        user_id,
-      }
-      const response = await fetch(
-        'http://192.168.56.1:5000/api/groups/getGroupDetails',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(sendBody),
-        }
-      )
-      const data = await response.json()
-      console.log(data.data)
-      setGroups(data.data)
-      console.log(groups)
-    } catch (error) {
-      console.error('Error fetching group details: ', error)
-    }
-  }
-
-  const handlePress = () => {
-    navigation.navigate('payment')
-  }
-
+  const grps = [
+    { _id: 1, name: 'Group 1' },
+    { _id: 2, name: 'Group 2' },
+    { _id: 3, name: 'Group 3' },
+  ]
   return (
     <View style={styles.container}>
-      {groups.map((g) => {
+      {grps.map((item) => {
         return (
-          <GrpComponent
-            grpname={g.group_name}
-            endDate='12.12.12'
-            onPress={() => handlePress}
-          />
+          <TouchableOpacity
+            key={item._id}
+            onPress={() => navigation.navigate('grphome')}
+          >
+            <GrpComponent grpname={item.name} />
+          </TouchableOpacity>
         )
       })}
-
       <View style={styles.buttonContainer}>
         <Button
-          title='add new group'
-          onPress={() => navigation.navigate('select')}
+          color='#0DF3C9B9'
+          title='create new group'
+          // onPress={() => navigation.navigate('select')}
+          style={styles.button}
+        />
+        <Button
+          color='#0DF3C9BB'
+          title='join existing group'
+          // onPress={() => navigation.navigate('select')}
           style={styles.button}
         />
       </View>
@@ -68,6 +43,7 @@ const Groups = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#000000',
   },
   buttonContainer: {
     position: 'absolute',

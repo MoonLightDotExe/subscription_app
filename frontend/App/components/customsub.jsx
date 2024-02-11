@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, Switch, Text, StyleSheet, Platform } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-const SubDetails = () => {
+const CustomSub = () => {
+    const [subname, setSubname] = useState('')
     const [cost, setCost] = useState('');
     const [dueDate, setDueDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
@@ -27,6 +28,13 @@ const SubDetails = () => {
     return (
         <View style={styles.container}>
             <View style={styles.box}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Name"
+                    value={subname}
+                    onChangeText={text => setSubname(text)}
+                    keyboardType="default"
+                />
                 <TextInput
                     style={styles.input}
                     placeholder="Cost"
@@ -108,4 +116,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SubDetails;
+export default CustomSub;
