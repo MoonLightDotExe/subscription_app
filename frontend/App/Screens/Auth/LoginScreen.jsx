@@ -56,6 +56,11 @@ const Login = ({ navigation }) => {
           title="Don't have an account? Sign up!"
           onPress={() => navigation.navigate('register')}
         />
+        <Button
+          color='#000000'
+          title="Click here for vendor login!"
+          onPress={() => navigation.navigate('vendorlogin')}
+        />
       </View>
     </View>
   )
